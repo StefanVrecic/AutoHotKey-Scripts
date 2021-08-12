@@ -4,12 +4,13 @@
 ; !r::reload
 
 ArrayClip := []
+OnClipboardChange("ClipChanged")
 return
 
-^~c::
-sleep 100
-ArrayClip.Push(clipboard)
-return
+ClipChanged(Type) {
+    global
+    ArrayClip.Push(clipboard)
+}
 
 ^1::
 RemovedValue := ArrayClip.RemoveAt(1)
